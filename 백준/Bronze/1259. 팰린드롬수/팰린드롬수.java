@@ -1,24 +1,28 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        ArrayList<String> list = new ArrayList<>();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-        while(true){
-            String s = sc.nextLine();
-            if(s.equals("0")) break;
-            else list.add(s);
-        }
+        while (true) {
+            String s = br.readLine();
+            if (s.equals("0")) break;
 
-        for (String s : list) {
-            boolean plan = true;
-            for(int i=0; i<s.length()/2; i++){
-                if(s.charAt(i) != s.charAt(s.length()-1-i)) plan = false;
+            boolean isPalindrome = true;
+            int len = s.length();
+
+            for (int i = 0; i < len / 2; i++) {
+                if (s.charAt(i) != s.charAt(len - 1 - i)) {
+                    isPalindrome = false;
+                    break;
+                }
             }
-            if(plan) System.out.println("yes");
-            else System.out.println("no");
+            if (isPalindrome) sb.append("yes\n");
+            else sb.append("no\n");
         }
+        System.out.print(sb);
     }
 }
