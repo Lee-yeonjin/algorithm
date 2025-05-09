@@ -12,10 +12,7 @@ public class Main {
 
         for(int i=0; i<num; i++){
             String s = br.readLine();
-            if(s.length() >=2) {
-                String[] strs = s.split(" ");
-                stack.push(Integer.parseInt(strs[1]));
-            }
+            if(s.charAt(0) == '1') stack.push(Integer.parseInt(s.substring(2)));
             else if(s.equals("2")) sb.append(stack.pop()).append("\n");
             else if(s.equals("3")) sb.append(stack.size()).append("\n");
             else if(s.equals("4")) sb.append(stack.isEmpty()).append("\n");
